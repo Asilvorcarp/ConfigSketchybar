@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
-SKETCHBAR_BIN="sketchybar"
+# handle click
+if [ "$BUTTON" = "left" ]; then
+  osascript -e "set volume output volume (output volume of (get volume settings) - 2)"
+fi
+if [ "$BUTTON" = "right" ] || [ "$MODIFIER" = "cmd" ]; then
+  osascript -e "set volume output volume (output volume of (get volume settings) + 2)"
+fi
 
+# render
 RESULT=$(osascript -e 'set {volume, muted} to {output volume, output muted} of (get volume settings)' -e 'return volume as string & " " & muted as string')
 read -r VOLUME MUTED <<< "$RESULT"
 
@@ -24,6 +31,6 @@ read -r VOLUME MUTED <<< "$RESULT"
 # esac
 # fi
 
-$SKETCHBAR_BIN -m \
+sketchybar -m \
 --set $NAME icon=$ICON \
 --set $NAME label="$VOLUME"

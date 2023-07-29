@@ -40,7 +40,6 @@ volume_number=(
   padding_right=0
   label.padding_left=0
   label.padding_right=0
-  click_script="$PLUGIN_DIR/volume_click.sh"
   update_freq=0
   script="$PLUGIN_DIR/volume_number.sh"
 )
@@ -56,6 +55,7 @@ sketchybar --add slider volume right            \
            --add item volume_number right       \
            --set volume_number "${volume_number[@]}"   \
            --subscribe volume_number volume_change     \
+                                     mouse.clicked     \
                                                        \
            --add item volume_icon right                \
            --set volume_icon "${volume_icon[@]}"

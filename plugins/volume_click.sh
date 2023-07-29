@@ -41,8 +41,19 @@ toggle_devices() {
   sketchybar -m "${args[@]}" > /dev/null
 }
 
-if [ "$BUTTON" = "right" ] || [ "$MODIFIER" = "shift" ]; then
-  toggle_devices
+# handle click
+if [ "$MODIFIER" = "cmd" ]; then
+    if [ "$BUTTON" = "left" ]; then
+        toggle_detail
+    fi
+    if [ "$BUTTON" = "right" ]; then
+        toggle_devices
+    fi
 else
-  toggle_detail
+    if [ "$BUTTON" = "left" ]; then
+    osascript -e "set volume output volume (output volume of (get volume settings) - 2)"
+    fi
+    if [ "$BUTTON" = "right" ]; then
+    osascript -e "set volume output volume (output volume of (get volume settings) + 2)"
+    fi
 fi
