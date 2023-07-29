@@ -41,7 +41,11 @@ left_click() {
 right_click() {
     echo right!
     if [[ $state == *"Not Running"* ]]; then
-        $FOCUS
+        if [ "$MODIFIER" = "cmd" ]; then
+            $FOCUS -w 0 -s 0
+        else
+            $FOCUS
+        fi
     else
         killall -INT focus
     fi
