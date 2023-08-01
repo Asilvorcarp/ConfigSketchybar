@@ -1,5 +1,9 @@
 #!/bin/bash
 
+popup () {
+  sketchybar --set spotify.anchor popup.drawing=$1
+}
+
 next ()
 {
   osascript -e 'tell application "Spotify" to play next track'
@@ -75,6 +79,14 @@ update ()
            --set spotify.play icon=􀊄                         )
   fi
   sketchybar -m "${args[@]}"
+
+    # show the popup on song changed
+    if [ "$TRACK" != "$LAST_TRACK" ]; then
+        LAST_TRACK="$TRACK"
+        popup on
+        sleep 2.5
+        popup off
+    fi
 }
 
 scrubbing() {
@@ -116,10 +128,6 @@ mouse_clicked () {
     *) exit
     ;;
   esac
-}
-
-popup () {
-  sketchybar --set spotify.anchor popup.drawing=$1
 }
 
 routine() {

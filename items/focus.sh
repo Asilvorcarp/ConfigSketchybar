@@ -17,6 +17,8 @@ focus=(
 always_focus=(
   width=0
   label.width=0
+  drawing=off
+  label.drawing=off
   update_freq=180
   script="$PLUGIN_DIR/always_focus.sh"
 )
