@@ -69,6 +69,7 @@ source "$ITEM_DIR/front_app.sh"
 
 # Center
 source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/prompt.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"
