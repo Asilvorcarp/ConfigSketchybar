@@ -9,6 +9,8 @@ echo "Text: $text"
 echo "Duration: $duration"
 echo "Id: $id"
 
+# Fix cannot find sketchybar
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 PROMPT_SCRIPT="sketchybar -m --set prompt.anchor popup.drawing=toggle"
 FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
